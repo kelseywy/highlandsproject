@@ -31,14 +31,28 @@
   </p>
 
 <h2>Properties</h2>
+  <table>
+    <%= form.fields_for :properties do |p_form| %>
+    <tr>
+      <th>Property Name</th>
+      <th>Property Value</th>
+    </tr>
+    <tr>
+    <td>
+      <%= p_form.text_field :property_name %>
+    </td>
+    <td>
+    <%= p_form.fields_for :product_properties do |productprop_form| %>
+      <%= productprop_form.text_field :value %>
+    <% end %>
+    </td>
+    <%= p_form.add_nested_fields_link :properties do %>
+      <span>New Property</span>
+    <% end %>
+      	<% end %>
+  </table>
 
-<div id="properties">
-<%= render :partial => 'property', :collection => @product.properties %>
-</div>
-<p>
-<%= add_property_link "Add Property" %>
-</p>
-<p>
-<%= f.submit "Submit" %>
-</p>
+  <p>
+    <%= form.submit "Add Product" %>
+  </p>
 <% end %>
