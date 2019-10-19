@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Highlandsproject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :javascript_includes %>
+    <%= javascript_pack_tag 'dashboard' %>
+    <%= javascript_pack_tag 'searching' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

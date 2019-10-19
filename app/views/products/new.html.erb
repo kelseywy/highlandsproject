@@ -1,0 +1,44 @@
+<h1>New Product</h1>
+<%= form_with scope: :product, url: products_path, local: true do |form| %>
+
+<% if @product.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@product.errors.count, "error") %> prohibited
+       this product from being saved:
+     </h2>
+     <ul>
+       <% @product.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+  <p>
+    <strong>Name</strong><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <strong>UPC</strong><br>
+    <%= form.text_field :upc %>
+  </p>
+
+  <p>
+    <strong>Available On</strong><br>
+    <%= form.date_field :available_on %>
+  </p>
+
+<h2>Properties</h2>
+
+<div id="properties">
+<%= render :partial => 'property', :collection => @product.properties %>
+</div>
+<p>
+<%= add_property_link "Add Property" %>
+</p>
+<p>
+<%= f.submit "Submit" %>
+</p>
+<% end %>
