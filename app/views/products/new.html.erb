@@ -1,5 +1,5 @@
 <h1>New Product</h1>
-<%= form_with scope: :product, url: products_path, local: true do |form| %>
+<%= form_with scope: @product, url: products_path, local: true do |f| %>
 
 <% if @product.errors.any? %>
    <div id="error_explanation">
@@ -17,42 +17,39 @@
 
   <p>
     <strong>Name</strong><br>
-    <%= form.text_field :name %>
+    <%= f.text_field :name %>
   </p>
 
   <p>
     <strong>UPC</strong><br>
-    <%= form.text_field :upc %>
+    <%= f.text_field :upc %>
   </p>
 
   <p>
     <strong>Available On</strong><br>
-    <%= form.date_field :available_on %>
+    <%= f.date_field :available_on %>
   </p>
 
-<h2>Properties</h2>
-  <table>
-    <%= form.fields_for :properties do |p_form| %>
-    <tr>
-      <th>Property Name</th>
-      <th>Property Value</th>
-    </tr>
-    <tr>
-    <td>
-      <%= p_form.text_field :property_name %>
-    </td>
-    <td>
-    <%= p_form.fields_for :product_properties do |productprop_form| %>
-      <%= productprop_form.text_field :value %>
-    <% end %>
-    </td>
-    <%= p_form.add_nested_fields_link :properties do %>
-      <span>New Property</span>
-    <% end %>
-      	<% end %>
-  </table>
+  <h3>Properties</h3>
+  <div id='properties'>
+  <% f.fields_for :properties do |property_form| %>
+    <p>
+      <strong>Name</strong><br>
+      <%= property_form.text_field :property_name %>
+    </p>
 
+    <% property_form.fields_for :product_properties do |value_form| %>
+    <p>
+      <strong>Name</strong><br>
+      <%= value_form.text_field :value %>
+    </p>
+    <% end %>
+  <% end %>
+  <div class='links'>
+    <%= link_to_add_association 'Add More Properties', f, :properties %>
+  </div>
+  </div>
   <p>
-    <%= form.submit "Add Product" %>
+    <%= f.submit "Add Product" %>
   </p>
 <% end %>

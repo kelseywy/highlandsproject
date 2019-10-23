@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'products/new'
 
-  resources :products
+  resources :products do
+    resources :properties do
+      resources :product_properties
+    end
+  end
 
   get :search, controller: :application
 

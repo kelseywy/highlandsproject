@@ -1,0 +1,21 @@
+<div class='nested-fields'>
+    <div class="field">
+      <table>
+        <tr>
+          <td>
+        <strong>Property Name</strong><br>
+        <%= f.text_field :property_name %>
+        </td>
+        <td>
+          <% f.fields_for :product_properties do |form| %>
+          <p>
+            <strong>Property Value</strong><br>
+            <%= form.text_field :value %>
+          </p>
+          <% end %>
+        </td>
+        </tr>
+      </table>
+    </div>
+    <%= link_to_remove_association "Remove Property", f %>
+  </div>

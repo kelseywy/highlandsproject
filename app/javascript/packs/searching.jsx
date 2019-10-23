@@ -3,11 +3,6 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 class SearchExample extends React.Component {
-/*  constructor(props) {
-    super(props);
-    // var self = this;
-    this.handleChange = this.handleChange.bind(this);
-  }*/
    state = { searchString: '' }
    handleChange = (e) => {
      this.setState({ searchString:e.target.value });
@@ -25,25 +20,22 @@ class SearchExample extends React.Component {
           <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Type here..."/>
           <ul>
             {libraries.map(function(i) {
-                return <li key={i.name}>{i.name} <a href={i.url}>{i.url}</a></li>;
+                return <li key={i.id}>Product Name: {i.name} UPC: {i.upc} Available On: {i.available_on}</li>;
             }) }
           </ul>
-       </div>
+		    </div>
      );
    }
 }
 
 // Constant, library
-var libraries = [
-    { name: json.name, url: json.upc }
-
-];
+var libraries = gon.products;
 
 // put input and display on page
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <SearchExample items={libraries} />,
-    document.getElementById('app')
+    document.getElementById('search')
   )
  })

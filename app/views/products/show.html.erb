@@ -13,4 +13,9 @@
   <%= @product.available_on %>
 </p>
 
+<% if @product.properties.any? %>
+<h2>Properties of <%= @product.name %> </h2>
+<%= render @product.properties.property_name %>
+<% end %>
+
 <%= link_to 'Back to Products List', products_path %>

@@ -1,6 +1,11 @@
 class Product < ApplicationRecord
   has_many :properties
+  has_many :product_properties,
+           :through => :properties
   accepts_nested_attributes_for :properties
+  accepts_nested_attributes_for :product_properties
+  attr_accessor :properties_attributes,
+                :product_properties_attributes
 
   validates :name, :upc, :available_on, presence: true
   validates :name, :upc, uniqueness: true
@@ -24,4 +29,5 @@ class Product < ApplicationRecord
     errors.add(:available_on, "must be a future date") if
       !available_on.blank? and available_on < Date.today
   end
-  end
+
+end

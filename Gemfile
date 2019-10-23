@@ -53,8 +53,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Dynamically Add Form Fields
-gem 'nested_form_fields'
 
 # Enable jquery for nested form Fields
 gem 'jquery-rails'
@@ -62,6 +60,11 @@ gem 'jquery-rails'
 # Enable React for Rails
 gem 'react-rails'
 
-# For search 
-gem 'haml'
-gem 'ransack'
+# Enable elasticsearch
+gem 'searchkick'
+
+# Pass variables to JS
+gem 'gon'
+
+# Dynamically add form fields
+gem "cocoon"
