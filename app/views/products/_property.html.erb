@@ -1,0 +1,10 @@
+<div class='nested-fields'>
+<div class="field">
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.fields_for :product_properties do |product_property| %>
+<%= product_property.text_field :value %>
+<% end %>
+</div>
+</div>

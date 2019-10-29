@@ -1,7 +1,7 @@
 class ProductProperty < ApplicationRecord
-  belongs_to :property
-  belongs_to :product
-  attr_accessor :value
+  belongs_to :property, optional: true
+  belongs_to :product, optional: true
+
 
   validates :value, presence: true
   validates :value, length: { maximum: 255,

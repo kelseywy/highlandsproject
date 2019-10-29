@@ -4,8 +4,7 @@ class Product < ApplicationRecord
            :through => :properties
   accepts_nested_attributes_for :properties
   accepts_nested_attributes_for :product_properties
-  attr_accessor :properties_attributes,
-                :product_properties_attributes
+
 
   validates :name, :upc, :available_on, presence: true
   validates :name, :upc, uniqueness: true
@@ -13,7 +12,6 @@ class Product < ApplicationRecord
 
   validates :name, length: { maximum: 1024,
     too_long: "%{count} characters is the maximum allowed" }
-
 
   validate :check_length
 

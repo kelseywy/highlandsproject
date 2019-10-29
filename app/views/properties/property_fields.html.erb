@@ -1,0 +1,15 @@
+<fieldset class='form-group'>
+
+  <%= f.label :property_name, 'Property' %>
+  <%= f.text_field :property_name %>
+  <br>
+
+  <small id="optionHelp" class="form-text text-muted">
+    (e.g. "Size" or "Color")
+  </small>
+
+  <%= f.fields_for :product_properties do |builder| %>
+    <%= render 'product_property_fields', f: builder %>
+  <% end %>
+
+</fieldset>

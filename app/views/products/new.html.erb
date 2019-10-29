@@ -1,5 +1,5 @@
 <h1>New Product</h1>
-<%= form_with scope: @product, url: products_path, local: true do |f| %>
+<%= form_with(model: @product, local: true) do |f| %>
 
 <% if @product.errors.any? %>
    <div id="error_explanation">
@@ -31,24 +31,19 @@
   </p>
 
   <h3>Properties</h3>
-  <div id='properties'>
-  <% f.fields_for :properties do |property_form| %>
-    <p>
-      <strong>Name</strong><br>
-      <%= property_form.text_field :property_name %>
-    </p>
+  <fieldset id='properties'>
+    <ol>
+    <%= f.fields_for :properties do |property| %>
+      <%= render 'property_fields', f: property %>
+      <% end %>
+    </ol>
+      <%= link_to_add_association 'Add More Properties', f, :properties,
+          'data-association-insertion-node' => "#properties ol",
+          'data-association-insertion-method' => "append",
+          :wrap_object => Proc.new {|property| property.product_properties.build; property } %>
+    </fieldset>
 
-    <% property_form.fields_for :product_properties do |value_form| %>
-    <p>
-      <strong>Name</strong><br>
-      <%= value_form.text_field :value %>
-    </p>
-    <% end %>
-  <% end %>
-  <div class='links'>
-    <%= link_to_add_association 'Add More Properties', f, :properties %>
-  </div>
-  </div>
+
   <p>
     <%= f.submit "Add Product" %>
   </p>

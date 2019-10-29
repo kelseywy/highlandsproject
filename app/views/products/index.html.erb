@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <h1>Products</h1>
 
 <%= link_to 'New Product', new_product_path %>
@@ -17,6 +18,12 @@
       <td><%= product.name %></td>
       <td><%= product.upc %></td>
       <td><%= product.available_on %></td>
+       <% product.properties.each do |property| %>
+       <td><%= property.name %></td>
+       <% property.product_properties.each do |product_property| %>
+       <td><%= product_property.value %></td>
+       <% end %>
+       <% end %>
       <td><%= link_to 'Details', product_path(product) %></td>
     </tr>
   <% end %>

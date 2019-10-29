@@ -1,15 +1,28 @@
-<fieldset class='form-group'>
-
-  <%= f.label :property_name, 'Property' %>
-  <%= f.text_field :property_name %>
-  <br>
-
-  <small id="optionHelp" class="form-text text-muted">
-    (e.g. "Size" or "Color")
-  </small>
-
-  <%= f.fields_for :product_properties do |builder| %>
-    <%= render 'product_property_fields', f: builder %>
-  <% end %>
-
-</fieldset>
+<div class='nested-fields'>
+    <div class="field">
+      <table>
+        <tr>
+          <th>
+        <strong>Property Name</strong><br>
+        </th>
+        <td>
+          <%= f.fields_for :properties do |field| %>
+          <%= f.text_field :property_name %>
+      <% end %>
+        </td>
+        <th>
+        <strong>Property Value</strong><br>
+        </th>
+        <td>
+        <%= f.fields_for :product_properties do |field| %>
+            <%= field.text_field :value %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association 'Add More Properties', f, :product_properties %>
+        </div>
+        </td>
+        </tr>
+      </table>
+    </div>
+    <%= link_to_remove_association "Remove Property", f %>
+  </div>

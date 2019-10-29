@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -13,9 +15,12 @@
   <%= @product.available_on %>
 </p>
 
-<% if @product.properties.any? %>
-<h2>Properties of <%= @product.name %> </h2>
-<%= render @product.properties.property_name %>
-<% end %>
+<p>
+  <strong>Properties:</strong>
+</p>
+
+      <% @product.properties.each do |property| %>
+      <td><%= property.name %></td>
+      <% end %>
 
 <%= link_to 'Back to Products List', products_path %>

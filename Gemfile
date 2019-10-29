@@ -67,4 +67,8 @@ gem 'searchkick'
 gem 'gon'
 
 # Dynamically add form fields
-gem "cocoon"
+gem 'cocoon'
+
+# new search
+gem 'ransack'
+gem 'haml'
