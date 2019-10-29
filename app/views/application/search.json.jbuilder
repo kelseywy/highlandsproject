@@ -1,7 +1,2 @@
-json.products do
-  json.array!(@products, :name, :upc) do |product|
-    json.name product.name
-    json.upc product.upc
-    json.available_on product.available_on
-  end
-end
+json.extract! @products, :name, :upc, :available_on, :created_at, :updated_at
+json.url product_url(product, format: :json)

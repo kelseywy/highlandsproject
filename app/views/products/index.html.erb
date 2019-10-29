@@ -3,28 +3,25 @@
 
 <%= link_to 'New Product', new_product_path %>
 
+<h2>Search Products</h2>
 <div id="search"></div>
 
+<h2>All Products</h2>
 <table>
-  <tr>
-    <th>Name</th>
-    <th>UPC</th>
-    <th>Available On</th>
-    <th></th>
-  </tr>
 
   <% @products.each do |product| %>
     <tr>
-      <td><%= product.name %></td>
-      <td><%= product.upc %></td>
-      <td><%= product.available_on %></td>
+      <td>Product Name:<b> <%= product.name %></b></td>
+      <td>UPC: <%= product.upc %></td>
+      <td>Available On: <%= product.available_on %></td>
+    </tr>
+    <tr>
        <% product.properties.each do |property| %>
-       <td><%= property.name %></td>
+       <td><%= property.name %>:
        <% property.product_properties.each do |product_property| %>
-       <td><%= product_property.value %></td>
+       <%= product_property.value %></td>
        <% end %>
        <% end %>
-      <td><%= link_to 'Details', product_path(product) %></td>
     </tr>
   <% end %>
 </table>
