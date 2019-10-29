@@ -1,6 +1,5 @@
 class ProductProperty < ApplicationRecord
   belongs_to :property, optional: true
-  belongs_to :product, optional: true
 
 
   validates :value, presence: true
