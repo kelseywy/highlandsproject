@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+To run the application, please follow the steps below:
 
-* Ruby version
+* Download the project repository
+* Using your terminal, navigate to the project folder
+* Start the rails server using the rails s command
+* Visit http://localhost:3000/ to begin using the app
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project uses a SQLite database. No extra setup is required for the database once the project repository is downloaded.
